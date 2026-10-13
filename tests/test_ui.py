@@ -54,11 +54,11 @@ def test_logo_image_is_drawn_at_canvas_centre(app: PasswordManagerApp) -> None:
 
 
 def test_website_entry_has_focus_on_start(app: PasswordManagerApp) -> None:
+    # A withdrawn toplevel resets its focus memory to itself, so map it first.
+    app.root.deiconify()
     app.root.update()
-    focused = app.root.focus_get()
-    if focused is None:
-        pytest.skip("window manager reports no focused widget")
-    assert focused is app.website_entry
+    # Tk remembers the focus target per toplevel regardless of OS window focus.
+    assert str(app.root.tk.call("focus", "-lastfor", ".")) == str(app.website_entry)
 
 
 def test_email_entry_is_prefilled_with_default_email(app: PasswordManagerApp) -> None:
