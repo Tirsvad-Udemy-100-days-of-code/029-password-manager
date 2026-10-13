@@ -89,5 +89,8 @@ CONFIRM_BODY_TEMPLATE: str = (
     "Is it ok to save?"
 )
 
+## @brief Title of the information dialog shown after saving.
+INFO_TITLE: str = "Saved"
+
 ## @brief Message shown after an entry was saved.
 INFO_SAVED: str = "Entry saved."
