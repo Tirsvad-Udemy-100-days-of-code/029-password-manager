@@ -7,9 +7,13 @@
 # Runner:   needs a registered runner with the label ubuntu-latest backed by an
 #           Ubuntu image (actions/setup-python has no Python 3.13 for Debian).
 #           Verified on Gitea 1.27.3 with act_runner 0.6.1. The runner label is
-#           registered with the image catthehacker/ubuntu pinned by the digest
-#           in env.RUNNER_IMAGE_DIGEST (Ubuntu 24.04, tag act-latest at
-#           2026-10-13), as docker://catthehacker/ubuntu@<digest>. Tk and Xvfb are
+#           registered with a local tag of catthehacker/ubuntu pinned by the
+#           digest in env.RUNNER_IMAGE_DIGEST (Ubuntu 24.04, tag act-latest at
+#           2026-10-13): docker pull catthehacker/ubuntu@<digest>, then
+#           docker tag <that> mypass-ci-ubuntu:c58e2b364da0, and the label
+#           ubuntu-latest:docker://mypass-ci-ubuntu:c58e2b364da0. (act_runner
+#           0.6.1 ignores a label that contains @sha256 and uses its default
+#           image.) Tk and Xvfb are
 #           installed at the versions in env so the window tests run under a
 #           virtual display. To update: pull the new image, record its digest
 #           here and in the runner label, and update the two versions.
