@@ -12,7 +12,7 @@
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-13 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b4c2611] |
-| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | README go criterion follows the requested template instead of the framework's README template | pending |
+| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | README go criterion follows the requested template instead of the framework's README template | [8936cdc] |
 
 ---
 
@@ -73,3 +73,4 @@ README.md from the template, screenshots, a wiki in English, Danish and Bahasa M
 [US-001]: ../user-stories.md
 [MIL-004]: ./mil-004-save-and-validate.md
 [b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5
+[8936cdc]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/8936cdcc7d078fb3a9b16c3b3a9ab7e97046336a

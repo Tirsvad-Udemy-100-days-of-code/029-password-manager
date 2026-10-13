@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [8936cdc] |
 
 ---
 
@@ -63,3 +63,4 @@ Go — every Mandatory criterion of QC-MIL-001 and QC-LANG-001 passes. Mode: aut
 [MIL-005]: ../../milestones/mil-005-documentation-and-publishing.md
 [QC-MIL-001]: ../../../framework/qc/artifacts/qc-milestones-gateways.md
 [QC-LANG-001]: ../../../framework/qc/artifacts/qc-language-domain.md
+[8936cdc]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/8936cdcc7d078fb3a9b16c3b3a9ab7e97046336a
