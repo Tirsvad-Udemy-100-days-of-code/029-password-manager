@@ -31,11 +31,11 @@ one-week window of [BC-001], from the repository baseline to publication.
 
 | Gateway | Document | Window | Decision date | Owner | Stories | Main deliverable | Milestone |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Baseline and tooling | [MIL-001] | 2026-10-13 to 2026-10-14 | 2026-10-14 | S01 | none (technical) | pyproject, layout, Doxyfile, CI, ADR | |
-| Password generator logic | [MIL-002] | 2026-10-14 to 2026-10-15 | 2026-10-15 | S01 | US-001.02 | `generate_password` and tests | |
-| Tkinter user interface | [MIL-003] | 2026-10-15 to 2026-10-16 | 2026-10-16 | S01 | US-001.01, .02, .03, .06 | runnable window with generation and clipboard | |
-| Save and validate | [MIL-004] | 2026-10-16 to 2026-10-17 | 2026-10-17 | S01 | US-001.04, .05, .06 | validated, confirmed saving to `data.txt` | |
-| Documentation and publishing | [MIL-005] | 2026-10-17 to 2026-10-19 | 2026-10-19 | S01 | US-001.07 | README, screenshots, 3-language wiki, repo metadata | |
+| Baseline and tooling | [MIL-001] | 2026-10-13 to 2026-10-14 | 2026-10-14 | S01 | none (technical) | pyproject, layout, Doxyfile, CI, ADR | [Milestone 1][Milestone-1] |
+| Password generator logic | [MIL-002] | 2026-10-14 to 2026-10-15 | 2026-10-15 | S01 | US-001.02 | `generate_password` and tests | [Milestone 2][Milestone-2] |
+| Tkinter user interface | [MIL-003] | 2026-10-15 to 2026-10-16 | 2026-10-16 | S01 | US-001.01, .02, .03, .06 | runnable window with generation and clipboard | [Milestone 3][Milestone-3] |
+| Save and validate | [MIL-004] | 2026-10-16 to 2026-10-17 | 2026-10-17 | S01 | US-001.04, .05, .06 | validated, confirmed saving to `data.txt` | [Milestone 4][Milestone-4] |
+| Documentation and publishing | [MIL-005] | 2026-10-17 to 2026-10-19 | 2026-10-19 | S01 | US-001.07 | README, screenshots, 3-language wiki, repo metadata | [Milestone 5][Milestone-5] |
 
 ```plantuml
 @startgantt
@@ -83,8 +83,8 @@ beyond the end date of 2026-10-19.
 ## Open Issues
 
 - "Python greater than 3.13" is read as `>=3.13`; confirm if 3.14 or newer is meant.
-- The wiki structure follows the TirSystem github-action wiki, which needs to be read when MIL-005 starts.
-- The Gitea Actions runner availability is unknown; the workflow is written, not proven, until a runner exists.
+- The wiki follows the page and language naming of the TirSystem github-action wiki (`Page`, `Page.da`, `Page.ms`); it was published through the Gitea wiki API.
+- The host has no Gitea Actions runner (Gitea 1.27.3), so the CI workflow is written and statically tested but has not run; see the condition of RC-013.
 
 ---
 
@@ -97,3 +97,8 @@ beyond the end date of 2026-10-19.
 [MIL-004]: ./milestones/mil-004-save-and-validate.md
 [MIL-005]: ./milestones/mil-005-documentation-and-publishing.md
 [b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5
+[Milestone-1]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/milestone/147
+[Milestone-2]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/milestone/148
+[Milestone-3]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/milestone/149
+[Milestone-4]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/milestone/150
+[Milestone-5]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/milestone/151
