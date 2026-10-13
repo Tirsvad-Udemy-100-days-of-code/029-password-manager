@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [29e5c56] |
 
 ---
 
@@ -59,3 +59,4 @@ Go: every Mandatory criterion of QC-PY-001 passes; criterion 10 is N-A because n
 
 [MIL-004]: ../../milestones/mil-004-save-and-validate.md
 [QC-PY-001]: ../../../framework/qc/code/qc-programming-python.md
+[29e5c56]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/29e5c5672232c88b94690ec87d0c510d3e04a0d0
