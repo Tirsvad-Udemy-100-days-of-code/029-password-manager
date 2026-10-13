@@ -1,0 +1,57 @@
+# Project configuration for MyPass (Udemy 100 Days of Code, day 29).
+# Read by pip, setuptools and pytest. Decision record: docs/milestones/mil-001-baseline-and-tooling.md
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mypass"
+version = "0.1.0"
+description = "MyPass: a small Tkinter password manager that generates strong passwords and saves entries."
+readme = "README.md"
+requires-python = ">=3.13"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [{ name = "Jens Tirsvad Nielsen" }]
+keywords = ["tkinter", "password-manager", "password-generator", "100-days-of-code"]
+# The standard library is enough: no runtime dependencies.
+dependencies = []
+
+[project.optional-dependencies]
+# Pinned: tests (pytest), workflow checks (PyYAML, yamllint), lint and types (ruff, mypy).
+dev = [
+    "pytest==9.1.1",
+    "pyyaml==6.0.3",
+    "yamllint==1.38.0",
+    "ruff==0.17.0",
+    "mypy==2.4.0",
+    "types-PyYAML==6.0.12.20260906",
+]
+
+[project.scripts]
+mypass = "mypass.ui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mypass = ["assets/*.png"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "N"]
+
+[tool.mypy]
+strict = true
+mypy_path = "src"
+files = ["src", "tests"]

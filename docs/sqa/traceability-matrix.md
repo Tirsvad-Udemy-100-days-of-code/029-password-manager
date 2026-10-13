@@ -33,12 +33,16 @@ updated whenever an artifact instance is created or reviewed.
 | [MIL-003] | Milestone | en | it | [BC-001], [US-001], [MIL-002] | [MIL-004] | [RC-007] |
 | [MIL-004] | Milestone | en | it | [BC-001], [US-001], [MIL-003] | [MIL-005] | [RC-008] |
 | [MIL-005] | Milestone | en | it | [BC-001], [US-001], [MIL-004] | - | [RC-009] |
+| [ADR-0001] | Architecture Decision Record | - | - | [BC-001], [SA-001] | [MIL-001], [MIL-003] | [RC-010] |
+| MIL-001 Python (src, tests) | Python Source Code | - | - | [MIL-001], [ADR-0001] | - | [RC-011] |
+| MIL-001 YAML (ci.yml, .yamllint.yml) | YAML File | - | - | [MIL-001] | - | [RC-012] |
+| MIL-001 CI workflow (ci.yml) | CI Workflow | - | - | [MIL-001] | - | [RC-013] (Go-with-conditions) |
 
 ## Coverage Notes
 
 - No instance exists yet for DM, SSD, OC, SD, DCD, ERD, UC, DICT, KPI, BMC, BPMN or RA: the project is small and the Project Plan needs none of them.
 - `-` in Upstream means foundational; in Downstream, nothing is built on it yet.
-- RC-001 to RC-009 are autonomous stand-in reviews, not independent.
+- RC-001 to RC-013 are autonomous stand-in reviews, not independent.
 
 ---
 
@@ -62,3 +66,8 @@ updated whenever an artifact instance is created or reviewed.
 [UCD-001]: ../use-case-diagram.md
 [US-001]: ../user-stories.md
 [b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5
+[ADR-0001]: ../adr/adr-0001-clipboard-without-pyperclip.md
+[RC-010]: ./reviews/rc-010-adr-0001.md
+[RC-011]: ./reviews/rc-011-mil-001-python.md
+[RC-012]: ./reviews/rc-012-mil-001-yaml.md
+[RC-013]: ./reviews/rc-013-mil-001-workflow.md

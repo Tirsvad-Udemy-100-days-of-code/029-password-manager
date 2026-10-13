@@ -1,0 +1,62 @@
+# Review of MIL-001 Python source and tests
+
+## Metadata
+| Key | Value |
+| --- | --- |
+| ID | RC-011 |
+| CrossReference | [MIL-001], [QC-PY-001] |
+
+## Version History
+| Date | Status | Author | Reviewer | Change | Commit |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [ea1b121] |
+
+---
+
+## Artifact Under Review
+
+- Instance reviewed: `src/mypass/` and `tests/` delivered by [MIL-001]
+- Checklist used: [QC-PY-001]
+- Scope: full review
+- Language and domain: n/a (technical type)
+- Language reviewer: none
+- Mode: autonomous, not independent (reviewer is `AI as stand-in for S01`)
+
+## Checklist Results
+
+### QC-PY-001
+
+| # | Criterion | Status | Evidence/Notes |
+| --- | --- | --- | --- |
+| 1 | Packages, modules, functions, variables, classes and constants follow PEP 8 casing (`snake_case`, `PascalCase`, `UPPER_SNAKE`) | Pass | `snake_case` functions, `UPPER_SNAKE` constants, `test_<behavior>` test names. |
+| 2 | Names state purpose in the domain's language; no unexplained abbreviations, no single-letter names outside tiny scopes | Pass | Names state purpose (`LETTER_COUNT_RANGE`, `DEFAULT_EMAIL`); no abbreviations. |
+| 3 | Code is produced by the project's formatter and passes its linter with no unexplained suppressions | Pass | `ruff format` leaves files unchanged and `ruff check` passes (ruff 0.17.0, `[tool.ruff]` in pyproject.toml); no suppressions. |
+| 4 | Every function and method signature is type-annotated, including `-> None` | Pass | All functions in `src/` and `tests/` are annotated, including `-> None`. |
+| 5 | No bare `except:`, no swallowed exceptions; specific exceptions are raised and the cause is kept (`raise ... from`) | Pass | No `except` clauses exist. |
+| 6 | No mutable default arguments and no shadowed builtins | Pass | No mutable defaults and no shadowed builtins. |
+| 7 | Files, locks and connections are managed with context managers | Pass | No files, locks or connections are opened in this milestone. |
+| 8 | Public modules, classes and functions have docstrings that say what, not how | Pass | Doxygen `## @file`/`@brief` comments on the module and every constant; test functions have docstrings where they state more than the name. |
+| 9 | Logging uses `logging`, not `print`; no secrets or personal data in log output | Pass | No `print` and no logging calls; no secrets in the code. |
+| 10 | Classes and operations trace to the Design Class Diagram they implement; deviations are recorded | N-A | No Design Class Diagram exists: the Project Plan plans none for this small project; the code has no classes. Deviation recorded here. |
+| 11 | Tests exist for new behaviour, are named for the behaviour, and do not depend on order or the network | Pass | `tests/test_smoke.py` and `tests/test_workflows.py` (9 tests) pass and do not depend on order or the network. |
+| 12 | Type checker runs in strict mode without errors; `Any` is justified in a comment | Pass | `mypy --strict` (mypy 2.4.0) reports no issues; one `cast` with a justified type in `tests/test_workflows.py`. |
+| 13 | Dependencies are declared and pinned in the project's dependency file, none unused | Pass | Dev dependencies are pinned exactly in `pyproject.toml`; runtime dependencies are empty. |
+| 14 | Each piece of knowledge (a business rule, constant, format, validation or query) is defined in one place; code is merged only where it expresses the same knowledge, not where it merely looks alike | Pass | Every fixed value lives once in `constants.py`. |
+| 15 | Imports point inward: business-rule modules import no framework, database, UI or delivery-mechanism code, and there are no import cycles | Pass | `constants.py` imports only `string`; no GUI, no cycles. |
+| 16 | SOLID holds: a class or module has one reason to change; new behaviour is added by extension, not by editing a type test in several places; subclasses honour the contract of their base; protocols are narrow; high-level code depends on protocols or abstract types and receives its implementations | Pass | One module with one reason to change (the values); no classes yet. |
+
+## Overall Verdict
+
+Go: every Mandatory criterion of QC-PY-001 passes; criterion 10 is N-A because no Design Class Diagram exists (recorded). Mode: autonomous, not independent.
+
+## Action Items
+
+| Action | Owner | Due |
+| --- | --- | --- |
+| none | S01 | 2026-10-13 |
+
+---
+
+[MIL-001]: ../../milestones/mil-001-baseline-and-tooling.md
+[QC-PY-001]: ../../../framework/qc/code/qc-programming-python.md
+[ea1b121]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/ea1b1217349a64c536b312c41b8dd7236ade4c62
