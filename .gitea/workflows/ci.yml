@@ -6,9 +6,13 @@
 # Inputs:   none. Secrets: none. Changes outside the repository: none.
 # Runner:   needs a registered runner with the label ubuntu-latest backed by an
 #           Ubuntu image (actions/setup-python has no Python 3.13 for Debian).
-#           Verified on Gitea 1.27.3 with act_runner 0.6.1 and the image
-#           catthehacker/ubuntu:act-latest. Tk and Xvfb are installed by a step
-#           so the window tests run under a virtual display.
+#           Verified on Gitea 1.27.3 with act_runner 0.6.1. The runner label is
+#           registered with the image catthehacker/ubuntu pinned by the digest
+#           in env.RUNNER_IMAGE_DIGEST (Ubuntu 24.04, tag act-latest at
+#           2026-10-13), as docker://catthehacker/ubuntu@<digest>. Tk and Xvfb are
+#           installed at the versions in env so the window tests run under a
+#           virtual display. To update: pull the new image, record its digest
+#           here and in the runner label, and update the two versions.
 # Tools:    the Python version is set once in env.PYTHON_VERSION.
 
 name: CI
@@ -32,6 +36,11 @@ permissions:
 
 env:
   PYTHON_VERSION: "3.13"
+  # The runner image digest (documentation: the label is set on the runner) and the
+  # Ubuntu 24.04 package versions installed on it. See the Runner note above.
+  RUNNER_IMAGE_DIGEST: "sha256:c58e2b364da03b0c804c7d660f2ecbedf2f221a382b9baa0b344b0144780ff43"
+  LIBTK_VERSION: "8.6.14-1build1"
+  XVFB_VERSION: "2:21.1.12-1ubuntu1.8"
 
 jobs:
   test:
@@ -53,7 +62,8 @@ jobs:
         run: |
           if [ "$(id -u)" -ne 0 ]; then SUDO=sudo; fi
           ${SUDO:-} apt-get update -qq
-          ${SUDO:-} apt-get install -y -qq --no-install-recommends libtk8.6 xvfb
+          PACKAGES="libtk8.6=${LIBTK_VERSION} xvfb=${XVFB_VERSION}"
+          ${SUDO:-} apt-get install -y -qq --no-install-recommends ${PACKAGES}
 
       - name: Install the project with test tools
         run: |
