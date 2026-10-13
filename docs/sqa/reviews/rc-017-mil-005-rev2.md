@@ -52,6 +52,20 @@
 
 Go — every Mandatory criterion of QC-MIL-001 and QC-LANG-001 passes. Mode: autonomous, not independent; criteria 3, 5 and 9 of QC-LANG-001 rest on the confirmation of the language reviewer S01.
 
+## Final Verification
+
+Run on a fresh clone of the branch on Windows 11 with Python 3.13 (task "Final verification" of MIL-005, 2026-10-13):
+
+| Check | Result |
+| --- | --- |
+| `py -3.13 -m venv .venv`, `python -m pip install --upgrade pip`, `python -m pip install -e ".[dev]"` | Succeeded |
+| `python -m pytest` | 41 passed, 1 skipped (focus assertion needs a focused window) |
+| `ruff format --check`, `ruff check`, `mypy` (strict) | No findings |
+| `yamllint -c .yamllint.yml .gitea .yamllint.yml` | No findings |
+| `doxygen Doxyfile` | `docs/doxygen/html/index.html` built; two warnings about links in README.md |
+| Linux Debian and MacOS commands | Not run on those systems; standard `venv` commands |
+| Repository description and 9 topics | Set through the Gitea API and read back |
+
 ## Action Items
 
 | Action | Owner | Due |
