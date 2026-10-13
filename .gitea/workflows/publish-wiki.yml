@@ -2,7 +2,9 @@
 #
 # Purpose:  keep the wiki (English, Danish, Bahasa Malaysia) equal to the pages in
 #           wiki/ (MIL-005, BC-001 objective 5).
-# Triggers: push to main that changes wiki/ or this file, and a manual run.
+# Triggers: push to main that changes wiki/ or this file. There is no manual
+#           trigger: a manual run would publish for real, and the shared workflow
+#           has no dry-run input (QC-WF-001 criterion 12).
 # Inputs:   none. Secrets: TOKEN_FOR_GITEA_WIKI, an organization secret, passed to
 #           the shared workflow; it is never written to a log or a command line.
 # Changes outside the repository: creates, updates and, because prune is "true",
@@ -19,7 +21,6 @@ on:
     paths:
       - "wiki/**"
       - ".gitea/workflows/publish-wiki.yml"
-  workflow_dispatch:
 
 # Two merges in a row queue instead of racing.
 concurrency:

@@ -32,7 +32,7 @@ updated whenever an artifact instance is created or reviewed.
 | [MIL-002] | Milestone | en | it | [BC-001], [US-001], [MIL-001] | [MIL-003] | [RC-006] |
 | [MIL-003] | Milestone | en | it | [BC-001], [US-001], [MIL-002] | [MIL-004] | [RC-007] |
 | [MIL-004] | Milestone | en | it | [BC-001], [US-001], [MIL-003] | [MIL-005] | [RC-008] |
-| [MIL-005] | Milestone | en | it | [BC-001], [US-001], [MIL-004] | - | [RC-017] (revision 2; first [RC-009]) |
+| [MIL-005] | Milestone | en | it | [BC-001], [US-001], [MIL-004] | - | [RC-022] (revision 3; earlier [RC-017], [RC-009]) |
 | [ADR-0001] | Architecture Decision Record | - | - | [BC-001], [SA-001] | [MIL-001], [MIL-003] | [RC-010] |
 | MIL-001 Python (src, tests) | Python Source Code | - | - | [MIL-001], [ADR-0001] | - | [RC-011] |
 | MIL-001 YAML (ci.yml, .yamllint.yml) | YAML File | - | - | [MIL-001] | - | [RC-012] |
@@ -40,12 +40,13 @@ updated whenever an artifact instance is created or reviewed.
 | MIL-002 Python (generator, tests) | Python Source Code | - | - | [MIL-002] | - | [RC-014] |
 | MIL-003 Python (ui, tests) | Python Source Code | - | - | [MIL-003], [ADR-0001] | - | [RC-015] |
 | MIL-004 Python (storage, ui save, tests) | Python Source Code | - | - | [MIL-004] | - | [RC-016] |
+| MIL-005 publish-wiki workflow (publish-wiki.yml) | CI Workflow | - | - | [MIL-005] | - | [RC-023] (Go-with-conditions) |
 
 ## Coverage Notes
 
 - No instance exists yet for DM, SSD, OC, SD, DCD, ERD, UC, DICT, KPI, BMC, BPMN or RA: the project is small and the Project Plan needs none of them.
 - `-` in Upstream means foundational; in Downstream, nothing is built on it yet.
-- RC-001 to RC-021 are autonomous stand-in reviews, not independent.
+- RC-001 to RC-023 are autonomous stand-in reviews, not independent.
 
 ---
 
@@ -82,3 +83,5 @@ updated whenever an artifact instance is created or reviewed.
 [RC-019]: ./reviews/rc-019-ci-workflow-pinned.md
 [RC-020]: ./reviews/rc-020-ci-workflow-actionlint.md
 [RC-021]: ./reviews/rc-021-ci-workflow-actionlint-in-ci.md
+[RC-022]: ./reviews/rc-022-mil-005-rev3.md
+[RC-023]: ./reviews/rc-023-publish-wiki-workflow.md
