@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [ccaa295] |
 
 ---
 
@@ -111,3 +111,4 @@ Go: every Mandatory criterion of QC-WF-001, QC-YML-001 and QC-PY-001 passes; the
 [QC-WF-001]: ../../../framework/qc/code/qc-workflow.md
 [QC-YML-001]: ../../../framework/qc/code/qc-yaml.md
 [QC-PY-001]: ../../../framework/qc/code/qc-programming-python.md
+[ccaa295]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/ccaa295b6ed7a6c9571d5f849ce72ebd3d6aa236
