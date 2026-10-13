@@ -4,11 +4,22 @@
 #           criterion 2).
 # Triggers: push to main, every pull request, and a manual run.
 # Inputs:   none. Secrets: none. Changes outside the repository: none.
-# Runner:   needs a registered runner with the label ubuntu-latest backed by an
-#           Ubuntu image (actions/setup-python has no Python 3.13 for Debian).
-#           Verified on Gitea 1.27.3 with act_runner 0.6.1 and the image
-#           catthehacker/ubuntu:act-latest. Tk and Xvfb are installed by a step
-#           so the window tests run under a virtual display.
+# Runner:   runs-on: mypass-ci, a label only the project's own runner has, so the
+#           job always runs on the pinned image. The instance also has a shared
+#           runner (label ubuntu-latest, image docker.gitea.com/runner-images)
+#           that is not pinned and is not used. The own runner is
+#           act_runner 0.6.1 on Gitea 1.27.3 with the label
+#           mypass-ci:docker://mypass-ci-ubuntu:c58e2b364da0, a local tag of
+#           catthehacker/ubuntu pinned by the digest in env.RUNNER_IMAGE_DIGEST
+#           (Ubuntu 24.04, tag act-latest at 2026-10-13):
+#             docker pull catthehacker/ubuntu@<digest>
+#             docker tag  catthehacker/ubuntu@<digest> mypass-ci-ubuntu:c58e2b364da0
+#           (act_runner 0.6.1 ignores a label that contains @sha256.) Tk and
+#           Xvfb are installed at the versions in env so the window tests run
+#           under a virtual display. To update: pull the new image, record its
+#           digest here, re-register the label and update the two versions.
+#           While the own runner is offline, pull requests wait; to use the
+#           shared runner instead, change runs-on to ubuntu-latest.
 # Tools:    the Python version is set once in env.PYTHON_VERSION.
 
 name: CI
@@ -32,11 +43,16 @@ permissions:
 
 env:
   PYTHON_VERSION: "3.13"
+  # The runner image digest (documentation: the label is set on the runner) and the
+  # Ubuntu 24.04 package versions installed on it. See the Runner note above.
+  RUNNER_IMAGE_DIGEST: "sha256:c58e2b364da03b0c804c7d660f2ecbedf2f221a382b9baa0b344b0144780ff43"
+  LIBTK_VERSION: "8.6.14-1build1"
+  XVFB_VERSION: "2:21.1.12-1ubuntu1.8"
 
 jobs:
   test:
     name: Run pytest
-    runs-on: ubuntu-latest
+    runs-on: mypass-ci
     timeout-minutes: 10
     permissions:
       contents: read
@@ -53,7 +69,8 @@ jobs:
         run: |
           if [ "$(id -u)" -ne 0 ]; then SUDO=sudo; fi
           ${SUDO:-} apt-get update -qq
-          ${SUDO:-} apt-get install -y -qq --no-install-recommends libtk8.6 xvfb
+          PACKAGES="libtk8.6=${LIBTK_VERSION} xvfb=${XVFB_VERSION}"
+          ${SUDO:-} apt-get install -y -qq --no-install-recommends ${PACKAGES}
 
       - name: Install the project with test tools
         run: |
