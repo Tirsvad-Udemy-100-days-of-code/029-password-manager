@@ -95,8 +95,9 @@ The workflow [`.gitea/workflows/ci.yml`](.gitea/workflows/ci.yml) runs on every
 push to `main` and every pull request. It installs the project with the `dev`
 extra, checks formatting (`ruff format --check`), lint (`ruff check`), types
 (`mypy --strict`) and YAML (`yamllint`), and runs `pytest` under a virtual display (`xvfb-run`), so the window tests run too.
-It needs a Gitea Actions runner with the label `ubuntu-latest` backed by an Ubuntu
-image (checked with `catthehacker/ubuntu:act-latest`).
+It runs on a runner with the label `mypass-ci`, backed by an Ubuntu image pinned by
+digest (`catthehacker/ubuntu`). The setup, the digest and the Tk and Xvfb versions are
+recorded in the workflow header and `env`. To use another runner, change `runs-on`.
 
 ## Build the source documentation
 
