@@ -20,7 +20,9 @@
 #           digest here, re-register the label and update the two versions.
 #           While the own runner is offline, pull requests wait; to use the
 #           shared runner instead, change runs-on to ubuntu-latest.
-# Tools:    the Python version is set once in env.PYTHON_VERSION.
+# Tools:    the Python version is set once in env.PYTHON_VERSION; actionlint is
+#           downloaded at env.ACTIONLINT_VERSION and checked against
+#           env.ACTIONLINT_SHA256 before it is used.
 
 name: CI
 
@@ -48,6 +50,11 @@ env:
   RUNNER_IMAGE_DIGEST: "sha256:c58e2b364da03b0c804c7d660f2ecbedf2f221a382b9baa0b344b0144780ff43"
   LIBTK_VERSION: "8.6.14-1build1"
   XVFB_VERSION: "2:21.1.12-1ubuntu1.8"
+  # actionlint release (linux_amd64) and the SHA-256 of its archive, from the
+  # release's actionlint_1.7.12_checksums.txt; the step fails on a mismatch.
+  ACTIONLINT_VERSION: "1.7.12"
+  ACTIONLINT_RELEASES: "https://github.com/rhysd/actionlint/releases/download"
+  ACTIONLINT_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
 
 jobs:
   test:
@@ -77,8 +84,19 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
 
+      - name: Install actionlint at a pinned version
+        run: |
+          cd "${RUNNER_TEMP}"; ARCHIVE="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl -fsSLO "${ACTIONLINT_RELEASES}/v${ACTIONLINT_VERSION}/${ARCHIVE}"
+          echo "${ACTIONLINT_SHA256}  ${ARCHIVE}" | sha256sum -c -
+          tar -xzf "${ARCHIVE}" actionlint
+          echo "${RUNNER_TEMP}" >> "${GITHUB_PATH}"
+
       - name: Lint the workflow YAML
         run: python -m yamllint -c .yamllint.yml .gitea .yamllint.yml
+
+      - name: Check the workflow with actionlint
+        run: actionlint -config-file .gitea/actionlint.yaml .gitea/workflows/*.yml
 
       - name: Check formatting, lint and types
         run: |

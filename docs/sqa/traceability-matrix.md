@@ -36,7 +36,7 @@ updated whenever an artifact instance is created or reviewed.
 | [ADR-0001] | Architecture Decision Record | - | - | [BC-001], [SA-001] | [MIL-001], [MIL-003] | [RC-010] |
 | MIL-001 Python (src, tests) | Python Source Code | - | - | [MIL-001], [ADR-0001] | - | [RC-011] |
 | MIL-001 YAML (ci.yml, .yamllint.yml) | YAML File | - | - | [MIL-001] | - | [RC-012] |
-| MIL-001 CI workflow (ci.yml) | CI Workflow | - | - | [MIL-001] | - | [RC-020] (supersedes [RC-019], [RC-018], [RC-013]) |
+| MIL-001 CI workflow (ci.yml) | CI Workflow | - | - | [MIL-001] | - | [RC-021] (supersedes [RC-020], [RC-019], [RC-018], [RC-013]) |
 | MIL-002 Python (generator, tests) | Python Source Code | - | - | [MIL-002] | - | [RC-014] |
 | MIL-003 Python (ui, tests) | Python Source Code | - | - | [MIL-003], [ADR-0001] | - | [RC-015] |
 | MIL-004 Python (storage, ui save, tests) | Python Source Code | - | - | [MIL-004] | - | [RC-016] |
@@ -45,7 +45,7 @@ updated whenever an artifact instance is created or reviewed.
 
 - No instance exists yet for DM, SSD, OC, SD, DCD, ERD, UC, DICT, KPI, BMC, BPMN or RA: the project is small and the Project Plan needs none of them.
 - `-` in Upstream means foundational; in Downstream, nothing is built on it yet.
-- RC-001 to RC-020 are autonomous stand-in reviews, not independent.
+- RC-001 to RC-021 are autonomous stand-in reviews, not independent.
 
 ---
 
@@ -81,3 +81,4 @@ updated whenever an artifact instance is created or reviewed.
 [RC-018]: ./reviews/rc-018-ci-workflow-rereview.md
 [RC-019]: ./reviews/rc-019-ci-workflow-pinned.md
 [RC-020]: ./reviews/rc-020-ci-workflow-actionlint.md
+[RC-021]: ./reviews/rc-021-ci-workflow-actionlint-in-ci.md

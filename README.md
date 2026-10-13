@@ -94,12 +94,14 @@ no display is available.
 The workflow [`.gitea/workflows/ci.yml`](.gitea/workflows/ci.yml) runs on every
 push to `main` and every pull request. It installs the project with the `dev`
 extra, checks formatting (`ruff format --check`), lint (`ruff check`), types
-(`mypy --strict`) and YAML (`yamllint`), and runs `pytest` under a virtual display (`xvfb-run`), so the window tests run too.
+(`mypy --strict`), YAML (`yamllint`) and the workflow itself (`actionlint`, downloaded at a
+pinned version and checksum), and runs `pytest` under a virtual display (`xvfb-run`), so the window tests run too.
 It runs on a runner with the label `mypass-ci`, backed by an Ubuntu image pinned by
 digest (`catthehacker/ubuntu`). The setup, the digest and the Tk and Xvfb versions are
 recorded in the workflow header and `env`. To use another runner, change `runs-on`.
-With [actionlint](https://github.com/rhysd/actionlint) installed, `python -m pytest` also
-checks the workflow with it (`.gitea/actionlint.yaml` declares the `mypass-ci` label).
+`.gitea/actionlint.yaml` declares the `mypass-ci` label for
+[actionlint](https://github.com/rhysd/actionlint); with it installed locally,
+`python -m pytest` runs the same check.
 
 ## Build the source documentation
 
