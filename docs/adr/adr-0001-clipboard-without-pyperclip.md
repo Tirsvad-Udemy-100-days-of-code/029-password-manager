@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [ea1b121] |
 
 Allowed Status values: `Proposed`, `Accepted`, `Rejected`, `Deprecated`, `Superseded by ADR-NNNN`.
 
@@ -61,3 +61,4 @@ not used.
 [SA-001]: ../stakeholder-analysis.md
 [MIL-001]: ../milestones/mil-001-baseline-and-tooling.md
 [MIL-003]: ../milestones/mil-003-tkinter-user-interface.md
+[ea1b121]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/ea1b1217349a64c536b312c41b8dd7236ade4c62
