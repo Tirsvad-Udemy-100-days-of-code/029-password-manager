@@ -3,24 +3,33 @@
 
 import tkinter as tk
 from pathlib import Path
+from tkinter import messagebox
 
 from mypass.constants import (
     ADD_BUTTON_WIDTH,
     BUTTON_ADD,
     BUTTON_GENERATE,
     CANVAS_SIZE,
+    CONFIRM_BODY_TEMPLATE,
+    CONFIRM_TITLE_TEMPLATE,
+    DATA_FILE_NAME,
     DEFAULT_EMAIL,
     EMAIL_ENTRY_WIDTH,
+    INFO_SAVED,
+    INFO_TITLE,
     LABEL_EMAIL,
     LABEL_PASSWORD,
     LABEL_WEBSITE,
     LOGO_FILE_NAME,
     PASSWORD_ENTRY_WIDTH,
+    WARNING_EMPTY_FIELDS,
+    WARNING_TITLE,
     WEBSITE_ENTRY_WIDTH,
     WINDOW_PADDING,
     WINDOW_TITLE,
 )
 from mypass.password_generator import generate_password
+from mypass.storage import is_entry_complete, save_entry
 
 _LOGO_PATH = Path(__file__).parent / "assets" / LOGO_FILE_NAME
 
@@ -31,9 +40,11 @@ class PasswordManagerApp:
 
     ## @brief Build the window content on the given root.
     ## @param root The Tk root window to build on.
-    def __init__(self, root: tk.Tk) -> None:
+    ## @param data_file The file where saved entries are appended.
+    def __init__(self, root: tk.Tk, data_file: Path = Path(DATA_FILE_NAME)) -> None:
         """Create all widgets on ``root`` and lay them out in a grid."""
         self.root = root
+        self.data_file = data_file
         root.title(WINDOW_TITLE)
         root.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
@@ -81,7 +92,27 @@ class PasswordManagerApp:
 
     ## @brief Command of the Add button.
     def save(self) -> None:
-        """Saving is implemented in milestone MIL-004."""
+        """Validate, confirm and append the entry, then reset the form."""
+        website = self.website_entry.get()
+        email = self.email_entry.get()
+        password = self.password_entry.get()
+
+        if not is_entry_complete(website, password):
+            messagebox.showwarning(WARNING_TITLE, WARNING_EMPTY_FIELDS)
+            return
+
+        confirmed = messagebox.askokcancel(
+            title=CONFIRM_TITLE_TEMPLATE.format(website=website),
+            message=CONFIRM_BODY_TEMPLATE.format(email=email, password=password),
+        )
+        if not confirmed:
+            return
+
+        save_entry(website, email, password, self.data_file)
+        self.website_entry.delete(0, tk.END)
+        self.password_entry.delete(0, tk.END)
+        self.website_entry.focus()
+        messagebox.showinfo(INFO_TITLE, INFO_SAVED)
 
 
 ## @brief Start the application and run its event loop.
