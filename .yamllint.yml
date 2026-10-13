@@ -1,0 +1,11 @@
+# yamllint configuration (yamllint 1.38.0), read by `python -m yamllint -c .yamllint.yml`.
+# Used for the CI workflow in .gitea/workflows/ (see MIL-001).
+extends: default
+
+rules:
+  line-length:
+    max: 100
+  document-start: disable
+  truthy:
+    # `on:` is a GitHub/Gitea Actions key, not a boolean.
+    check-keys: false
