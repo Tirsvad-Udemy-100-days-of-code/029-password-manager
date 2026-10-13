@@ -11,7 +11,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | S01 | Initial version | pending |
+| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | S01 | Initial version | [b4c2611] |
 
 ---
 
@@ -96,3 +96,4 @@ beyond the end date of 2026-10-19.
 [MIL-003]: ./milestones/mil-003-tkinter-user-interface.md
 [MIL-004]: ./milestones/mil-004-save-and-validate.md
 [MIL-005]: ./milestones/mil-005-documentation-and-publishing.md
+[b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5

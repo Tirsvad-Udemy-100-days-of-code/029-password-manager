@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | pending |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b4c2611] |
 
 ---
 
@@ -64,3 +64,4 @@ Go — every Mandatory criterion of QC-US-001 and QC-LANG-001 passes. Mode: auto
 [US-001]: ../../user-stories.md
 [QC-US-001]: ../../../framework/qc/artifacts/qc-user-story.md
 [QC-LANG-001]: ../../../framework/qc/artifacts/qc-language-domain.md
+[b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5

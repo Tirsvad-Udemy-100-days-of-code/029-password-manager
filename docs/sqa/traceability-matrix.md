@@ -9,7 +9,7 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | S01 | Initial version | pending |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | S01 | Initial version | [b4c2611] |
 
 ---
 
@@ -61,3 +61,4 @@ updated whenever an artifact instance is created or reviewed.
 [SA-001]: ../stakeholder-analysis.md
 [UCD-001]: ../use-case-diagram.md
 [US-001]: ../user-stories.md
+[b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5
