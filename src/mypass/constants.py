@@ -54,6 +54,9 @@ EMAIL_ENTRY_WIDTH: int = 35
 ## @brief Width of the password entry, in characters.
 PASSWORD_ENTRY_WIDTH: int = 21
 
+## @brief Width of the add button, in characters.
+ADD_BUTTON_WIDTH: int = 36
+
 ## @brief Text of the website label.
 LABEL_WEBSITE: str = "Website:"
 
