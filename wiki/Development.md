@@ -28,6 +28,10 @@ Build the HTML documentation with Doxygen; open `docs/doxygen/html/index.html` a
 doxygen Doxyfile
 ```
 
+## Wiki publishing
+
+The pages in `wiki/` are published to this wiki automatically when a change reaches `main` (workflow `.gitea/workflows/publish-wiki.yml`). Edit the files in `wiki/`, not the wiki pages in the web interface: pages that are not in `wiki/` are deleted.
+
 ## Design decision
 
 The clipboard uses Tkinter's own methods instead of `pyperclip`, so nothing has to be installed (ADR-0001 in `docs/adr/`).

@@ -10,6 +10,8 @@ the clipboard. It has no runtime dependencies.
 ![A generated password](docs/images/mypass-generated.png)
 
 The wiki is available in [English][wiki], [Dansk][wiki-da] and [Bahasa Malaysia][wiki-ms].
+Its pages live in `wiki/` and are published automatically when a change reaches `main`
+(`.gitea/workflows/publish-wiki.yml`).
 
 ## Requirements
 

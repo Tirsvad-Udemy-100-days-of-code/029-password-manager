@@ -28,6 +28,10 @@ Byg HTML-dokumentationen med Doxygen; åbn derefter `docs/doxygen/html/index.htm
 doxygen Doxyfile
 ```
 
+## Udgivelse af wikien
+
+Siderne i `wiki/` udgives automatisk til denne wiki, når en ændring når `main` (workflow `.gitea/workflows/publish-wiki.yml`). Ret filerne i `wiki/`, ikke wiki-siderne i webgrænsefladen: sider, der ikke findes i `wiki/`, bliver slettet.
+
 ## Designbeslutning
 
 Udklipsholderen bruger Tkinters egne metoder i stedet for `pyperclip`, så intet skal installeres (ADR-0001 i `docs/adr/`).

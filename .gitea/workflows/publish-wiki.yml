@@ -1,0 +1,43 @@
+# Publish the wiki pages of wiki/ to the repository wiki.
+#
+# Purpose:  keep the wiki (English, Danish, Bahasa Malaysia) equal to the pages in
+#           wiki/ (MIL-005, BC-001 objective 5).
+# Triggers: push to main that changes wiki/ or this file, and a manual run.
+# Inputs:   none. Secrets: TOKEN_FOR_GITEA_WIKI, an organization secret, passed to
+#           the shared workflow; it is never written to a log or a command line.
+# Changes outside the repository: creates, updates and, because prune is "true",
+#           deletes pages of this repository's wiki so that it equals wiki/.
+# Runner:   the shared workflow runs on the instance's ubuntu-latest runner.
+# Shared workflow: TirSystem/github-action, publish-wiki-pages.yml, pinned to the
+#           exact tag below together with the script it fetches (tools-ref).
+
+name: Publish wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "wiki/**"
+      - ".gitea/workflows/publish-wiki.yml"
+  workflow_dispatch:
+
+# Two merges in a row queue instead of racing.
+concurrency:
+  group: publish-wiki
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  wiki:
+    name: Publish the wiki pages
+    permissions:
+      contents: read
+    uses: TirSystem/github-action/.gitea/workflows/publish-wiki-pages.yml@v1.2.2
+    with:
+      wiki_dir: "wiki"
+      prune: "true"
+      tools-ref: "v1.2.2"
+    secrets:
+      TOKEN_FOR_GITEA_WIKI: ${{ secrets.TOKEN_FOR_GITEA_WIKI }}

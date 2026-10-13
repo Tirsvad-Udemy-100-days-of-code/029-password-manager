@@ -28,6 +28,10 @@ Bina dokumentasi HTML dengan Doxygen; kemudian buka `docs/doxygen/html/index.htm
 doxygen Doxyfile
 ```
 
+## Penerbitan wiki
+
+Halaman dalam `wiki/` diterbitkan ke wiki ini secara automatik apabila perubahan sampai ke `main` (aliran kerja `.gitea/workflows/publish-wiki.yml`). Sunting fail dalam `wiki/`, bukan halaman wiki dalam antara muka web: halaman yang tiada dalam `wiki/` akan dipadam.
+
 ## Keputusan reka bentuk
 
 Papan keratan menggunakan kaedah Tkinter sendiri dan bukan `pyperclip`, jadi tiada apa yang perlu dipasang (ADR-0001 dalam `docs/adr/`).
