@@ -69,8 +69,8 @@ jobs:
         run: |
           if [ "$(id -u)" -ne 0 ]; then SUDO=sudo; fi
           ${SUDO:-} apt-get update -qq
-          PACKAGES="libtk8.6=${LIBTK_VERSION} xvfb=${XVFB_VERSION}"
-          ${SUDO:-} apt-get install -y -qq --no-install-recommends ${PACKAGES}
+          ${SUDO:-} apt-get install -y -qq --no-install-recommends \
+            "libtk8.6=${LIBTK_VERSION}" "xvfb=${XVFB_VERSION}"
 
       - name: Install the project with test tools
         run: |

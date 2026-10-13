@@ -1,0 +1,7 @@
+# actionlint configuration (actionlint 1.7.12).
+# Run: actionlint -config-file .gitea/actionlint.yaml .gitea/workflows/ci.yml
+# Declares the label of the project's own runner (see the Runner note in ci.yml),
+# which actionlint would otherwise report as unknown.
+self-hosted-runner:
+  labels:
+    - mypass-ci

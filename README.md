@@ -98,6 +98,8 @@ extra, checks formatting (`ruff format --check`), lint (`ruff check`), types
 It runs on a runner with the label `mypass-ci`, backed by an Ubuntu image pinned by
 digest (`catthehacker/ubuntu`). The setup, the digest and the Tk and Xvfb versions are
 recorded in the workflow header and `env`. To use another runner, change `runs-on`.
+With [actionlint](https://github.com/rhysd/actionlint) installed, `python -m pytest` also
+checks the workflow with it (`.gitea/actionlint.yaml` declares the `mypass-ci` label).
 
 ## Build the source documentation
 
