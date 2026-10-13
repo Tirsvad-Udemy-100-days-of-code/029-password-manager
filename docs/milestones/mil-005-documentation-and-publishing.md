@@ -11,7 +11,8 @@
 ## Version History
 | Date | Status | Author | Reviewer | Change | Commit |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b4c2611] |
+| 2026-10-13 | Deprecated | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [b4c2611] |
+| 2026-10-13 | Accepted | Jens Tirsvad Nielsen | AI as stand-in for S01 | README go criterion follows the requested template instead of the framework's README template | [8936cdc] |
 
 ---
 
@@ -27,7 +28,7 @@ README.md from the template, screenshots, a wiki in English, Danish and Bahasa M
 
 | # | Criterion (objectively checkable) | Go | No-Go |
 | --- | --- | --- | --- |
-| 1 | `check-readme.sh` passes | Met | Any one not met |
+| 1 | README.md has every section of the requested template (Requirements, Set up for Windows PowerShell, Linux Debian and MacOS, Run, Run the tests, Continuous integration, Build the source documentation, Project layout, License) | Met | Any one not met |
 | 2 | README commands for Windows PowerShell, Linux Debian and macOS are standard `venv` commands and the Windows ones were run | Met | Any one not met |
 | 3 | wiki has the same pages in en, da and ms, each with a screenshot | Met | Any one not met |
 | 4 | repository description and at least 5 topics are set | Met | Any one not met |
@@ -72,3 +73,4 @@ README.md from the template, screenshots, a wiki in English, Danish and Bahasa M
 [US-001]: ../user-stories.md
 [MIL-004]: ./mil-004-save-and-validate.md
 [b4c2611]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/b4c26115f240097da76782a8e84a5367198226b5
+[8936cdc]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/8936cdcc7d078fb3a9b16c3b3a9ab7e97046336a

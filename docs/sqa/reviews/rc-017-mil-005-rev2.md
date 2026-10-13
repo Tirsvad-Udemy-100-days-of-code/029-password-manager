@@ -1,0 +1,80 @@
+# Review of MIL-005
+
+## Metadata
+| Key | Value |
+| --- | --- |
+| ID | RC-017 |
+| CrossReference | [MIL-005], [QC-MIL-001], [QC-LANG-001] |
+
+## Version History
+| Date | Status | Author | Reviewer | Change | Commit |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | AI as stand-in for S01 | Initial version | [8936cdc] |
+
+---
+
+## Artifact Under Review
+
+- Instance reviewed: [MIL-005] (second revision; first review RC-009)
+- Checklist used: [QC-MIL-001] and the cross-cutting [QC-LANG-001]
+- Scope: full review
+- Language and domain: en / it
+- Language reviewer: S01 (a person who reads English and knows the IT domain; confirmed in chat)
+- Mode: autonomous, not independent (reviewer is `AI as stand-in for S01`)
+
+## Checklist Results
+
+| # | Criterion | Status | Evidence/Notes |
+| --- | --- | --- | --- |
+| 1 | A concrete deliverable is defined for every gate | Pass | Deliverable unchanged: README, screenshots, wiki and repository metadata. |
+| 2 | Explicit Go/No-Go criteria are stated for each gate | Pass | Five checkable criteria; criterion 1 now names the sections of the requested README template instead of check-readme.sh. |
+| 3 | Dependencies on other milestones are explicitly mapped | Pass | Depends on MIL-004, with reason. |
+| 4 | Each milestone is traceable to a Business Case objective or KPI | Pass | Maps to BC-001 objective 5, success criteria 5 and 6; US-001.07. |
+| 5 | Milestone owner and approving reviewer are identified | Pass | Owner S01 and approving reviewer S01. |
+| 6 | Milestone has a defined target date consistent with project constraints | Pass | Target date 2026-10-19 inside the plan window. |
+
+## Language and Domain Results
+
+| # | Criterion | Status | Evidence/Notes |
+| --- | --- | --- | --- |
+| 1 | The Metadata table has a `Language` row and a `Domain` row, and neither is a placeholder | Pass | `Language | en` and `Domain | it` are in the Metadata table. |
+| 2 | `Language` is a BCP 47 code and `Domain` is a value from the registry's domain list | Pass | `en` is BCP 47; `it` is in the registry's domain list. |
+| 3 | The content (prose and table cells) is written in the stated language | Pass | All prose and table cells are English; confirmed by the language reviewer S01. |
+| 4 | The register matches the one the registry gives for the artifact type | Pass | Register is IT Executive English: decision-level, no code detail beyond naming deliverables. |
+| 5 | Domain terms are the PO terms of the domain's dictionary, with no synonyms | Pass | No `DICT` instance exists yet; terms (password, entry, website, email, clipboard, milestone) are used consistently across the documents; confirmed by the language reviewer S01. |
+| 6 | Metadata keys, section headings, IDs and statuses are in English | Pass | Metadata keys, headings, IDs and statuses are English. |
+| 7 | No translated twin (`<name>.<language>.md`) exists beside the document | Pass | No `*.en.md` or other translated twin exists in `docs/`. |
+| 8 | A change of language or domain since the previous accepted version has a Version History row and was reviewed again | Pass | First version: no language or domain change to record. |
+| 9 | A reviewer competent in the domain, and in the language, has confirmed that the domain terms are used correctly | Pass | Language reviewer S01 (the user) confirmed in chat on 2026-10-13 that the documents were read and the domain terms are correct. Mode: autonomous; the confirmation is the person's, the record is written by the AI. |
+| 10 | Abbreviations are spelled out on first use, in the stated language | Pass | Abbreviations (CI, ADR, API, UI, SQA, QC, FURPS+, ISO/IEC, PO) are spelled out at first use where they occur. |
+
+## Overall Verdict
+
+Go — every Mandatory criterion of QC-MIL-001 and QC-LANG-001 passes. Mode: autonomous, not independent; criteria 3, 5 and 9 of QC-LANG-001 rest on the confirmation of the language reviewer S01.
+
+## Final Verification
+
+Run on a fresh clone of the branch on Windows 11 with Python 3.13 (task "Final verification" of MIL-005, 2026-10-13):
+
+| Check | Result |
+| --- | --- |
+| `py -3.13 -m venv .venv`, `python -m pip install --upgrade pip`, `python -m pip install -e ".[dev]"` | Succeeded |
+| `python -m pytest` | 41 passed, 1 skipped (focus assertion needs a focused window) |
+| `ruff format --check`, `ruff check`, `mypy` (strict) | No findings |
+| `yamllint -c .yamllint.yml .gitea .yamllint.yml` | No findings |
+| `doxygen Doxyfile` | `docs/doxygen/html/index.html` built; two warnings about links in README.md |
+| Linux Debian and MacOS commands | Not run on those systems; standard `venv` commands |
+| Repository description and 9 topics | Set through the Gitea API and read back |
+
+## Action Items
+
+| Action | Owner | Due |
+| --- | --- | --- |
+| none | S01 | 2026-10-13 |
+
+---
+
+[MIL-005]: ../../milestones/mil-005-documentation-and-publishing.md
+[QC-MIL-001]: ../../../framework/qc/artifacts/qc-milestones-gateways.md
+[QC-LANG-001]: ../../../framework/qc/artifacts/qc-language-domain.md
+[8936cdc]: https://git.tirsystem.com/Tirsvad-Udemy-100-days-of-code/029-password-manager/commit/8936cdcc7d078fb3a9b16c3b3a9ab7e97046336a
