@@ -1,0 +1,63 @@
+# Traceability Matrix
+
+## Metadata
+| Key | Value |
+| --- | --- |
+| ID | TM-001 |
+| CrossReference | [BC-001] |
+
+## Version History
+| Date | Status | Author | Reviewer | Change | Commit |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-13 | Proposed | Jens Tirsvad Nielsen | S01 | Initial version | pending |
+
+---
+
+## Purpose
+
+Tracks backward/forward links between artifact instances so that the Business Case's
+cross-artifact traceability success criterion is measurable. A row is added or
+updated whenever an artifact instance is created or reviewed.
+
+## Traceability Table
+
+| Artifact Instance | Type | Language | Domain | Upstream (Backward Link) | Downstream (Forward Link) | Last Reviewed (RC-ID) |
+| --- | --- | --- | --- | --- | --- | --- |
+| [BC-001] | Business Case | en | it | - | [SA-001], [UCD-001] | [RC-001] |
+| [SA-001] | Stakeholder Analysis | en | it | [BC-001] | [US-001], [UCD-001] | [RC-002] |
+| [UCD-001] | Use Case Diagram | en | it | [BC-001], [SA-001] | [US-001] | [RC-003] |
+| [US-001] | User Story | en | it | [BC-001], [UCD-001] | [MIL-001], [MIL-002], [MIL-003], [MIL-004], [MIL-005] | [RC-004] |
+| [PP-001] | Project Plan | en | it | [BC-001], [SA-001] | [MIL-001], [MIL-002], [MIL-003], [MIL-004], [MIL-005] | none (no checklist; accepted by S01) |
+| [MIL-001] | Milestone | en | it | [BC-001], [US-001] | [MIL-002] | [RC-005] |
+| [MIL-002] | Milestone | en | it | [BC-001], [US-001], [MIL-001] | [MIL-003] | [RC-006] |
+| [MIL-003] | Milestone | en | it | [BC-001], [US-001], [MIL-002] | [MIL-004] | [RC-007] |
+| [MIL-004] | Milestone | en | it | [BC-001], [US-001], [MIL-003] | [MIL-005] | [RC-008] |
+| [MIL-005] | Milestone | en | it | [BC-001], [US-001], [MIL-004] | - | [RC-009] |
+
+## Coverage Notes
+
+- No instance exists yet for DM, SSD, OC, SD, DCD, ERD, UC, DICT, KPI, BMC, BPMN or RA: the project is small and the Project Plan needs none of them.
+- `-` in Upstream means foundational; in Downstream, nothing is built on it yet.
+- RC-001 to RC-009 are autonomous stand-in reviews, not independent.
+
+---
+
+[BC-001]: ../business-case.md
+[MIL-001]: ../milestones/mil-001-baseline-and-tooling.md
+[MIL-002]: ../milestones/mil-002-password-generator-logic.md
+[MIL-003]: ../milestones/mil-003-tkinter-user-interface.md
+[MIL-004]: ../milestones/mil-004-save-and-validate.md
+[MIL-005]: ../milestones/mil-005-documentation-and-publishing.md
+[PP-001]: ../project-plan.md
+[RC-001]: ./reviews/rc-001-business-case.md
+[RC-002]: ./reviews/rc-002-stakeholder-analysis.md
+[RC-003]: ./reviews/rc-003-use-case-diagram.md
+[RC-004]: ./reviews/rc-004-user-stories.md
+[RC-005]: ./reviews/rc-005-mil-001.md
+[RC-006]: ./reviews/rc-006-mil-002.md
+[RC-007]: ./reviews/rc-007-mil-003.md
+[RC-008]: ./reviews/rc-008-mil-004.md
+[RC-009]: ./reviews/rc-009-mil-005.md
+[SA-001]: ../stakeholder-analysis.md
+[UCD-001]: ../use-case-diagram.md
+[US-001]: ../user-stories.md
