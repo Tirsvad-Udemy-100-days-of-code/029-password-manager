@@ -94,8 +94,9 @@ no display is available.
 The workflow [`.gitea/workflows/ci.yml`](.gitea/workflows/ci.yml) runs on every
 push to `main` and every pull request. It installs the project with the `dev`
 extra, checks formatting (`ruff format --check`), lint (`ruff check`), types
-(`mypy --strict`) and YAML (`yamllint`), and runs `pytest`. It needs a Gitea
-Actions runner with the label `ubuntu-latest`.
+(`mypy --strict`) and YAML (`yamllint`), and runs `pytest` under a virtual display (`xvfb-run`), so the window tests run too.
+It needs a Gitea Actions runner with the label `ubuntu-latest` backed by an Ubuntu
+image (checked with `catthehacker/ubuntu:act-latest`).
 
 ## Build the source documentation
 

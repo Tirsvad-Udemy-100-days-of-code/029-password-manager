@@ -4,9 +4,11 @@
 #           criterion 2).
 # Triggers: push to main, every pull request, and a manual run.
 # Inputs:   none. Secrets: none. Changes outside the repository: none.
-# Runner:   needs a registered runner with the label ubuntu-latest and Python
-#           3.13 available to actions/setup-python. Gitea Actions; the same
-#           file also runs on GitHub Actions.
+# Runner:   needs a registered runner with the label ubuntu-latest backed by an
+#           Ubuntu image (actions/setup-python has no Python 3.13 for Debian).
+#           Verified on Gitea 1.27.3 with act_runner 0.6.1 and the image
+#           catthehacker/ubuntu:act-latest. Tk and Xvfb are installed by a step
+#           so the window tests run under a virtual display.
 # Tools:    the Python version is set once in env.PYTHON_VERSION.
 
 name: CI
@@ -47,6 +49,12 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Install Tk and a virtual display
+        run: |
+          if [ "$(id -u)" -ne 0 ]; then SUDO=sudo; fi
+          ${SUDO:-} apt-get update -qq
+          ${SUDO:-} apt-get install -y -qq --no-install-recommends libtk8.6 xvfb
+
       - name: Install the project with test tools
         run: |
           python -m pip install --upgrade pip
@@ -62,4 +70,4 @@ jobs:
           python -m mypy
 
       - name: Run the tests
-        run: python -m pytest
+        run: xvfb-run -a python -m pytest
